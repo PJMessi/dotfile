@@ -1,0 +1,188 @@
+[
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrev",
+      "cmd-shift-w": "workspace::CloseInactiveTabsAndPanes"
+      // confirm code actions selection using ctrl-enter
+      // "ctrl-enter": ["workspace::SendKeystrokes", "enter"]
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "cmd-1": ["pane::ActivateItem", 0],
+      "cmd-2": ["pane::ActivateItem", 1],
+      "cmd-3": ["pane::ActivateItem", 2],
+      "cmd-4": ["pane::ActivateItem", 3],
+      "cmd-5": ["pane::ActivateItem", 4],
+      "cmd-6": ["pane::ActivateItem", 5],
+      "cmd-7": ["pane::ActivateItem", 6],
+      "cmd-8": ["pane::ActivateItem", 7]
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-b": "workspace::ToggleLeftDock",
+      "cmd-shift-r": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-n": "workspace::NewTerminal",
+      "cmd-t": "workspace::NewTerminal"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-h": null
+    }
+  },
+  {
+    "context": "ChatPanel",
+    "bindings": {
+      // "cmd-shift-r": "assistant::ToggleFocus"
+      "cmd-shift-r": "collab_panel::ToggleFocus",
+      "escape": ["workspace::ActivatePaneInDirection", "Left"]
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      // "cmd-shift-r": "chat_panel::ToggleFocus"
+      "cmd-shift-b": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "m": "project_panel::CollapseAllEntries",
+      // "cmd-shift-b": "collab_panel::ToggleFocus"
+      "cmd-shift-b": "assistant::ToggleFocus"
+    }
+  },
+  {
+    "context": "CollabPanel",
+    "bindings": {
+      // "cmd-shift-b": "project_panel::ToggleFocus"
+      "cmd-shift-r": "chat_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      // "cmd-shift-r": "chat_panel::ToggleFocus"
+      "cmd-shift-r": "chat_panel::ToggleFocus"
+    }
+  },
+  /// VIM CONFIGURATIONS =======================================================
+  {
+    // NORMAL AND VISUAL MODE
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+    }
+  },
+  {
+    // NORMAL MODE
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "space d s": "outline::Toggle",
+      "space f": "editor::Format",
+      "g r": "editor::FindAllReferences",
+      "g i": "editor::GoToImplementation",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space p v": ["workspace::SendKeystrokes", "cmd-shift-e"],
+      "space x x": ["workspace::SendKeystrokes", "cmd-shift-m"],
+      "space p f": ["workspace::SendKeystrokes", "cmd-p"],
+      "space r n": "editor::Rename",
+      "space p s": "pane::DeploySearch",
+      "space p r": [
+        "pane::DeploySearch",
+        {
+          "replace_enabled": true
+        }
+      ],
+      "space c a": "editor::ToggleCodeActions",
+      "space z f": "editor::Fold",
+      "space z o": "editor::UnfoldLines",
+      "space space": "file_finder::Toggle",
+      "space r t": ["task::Spawn", { "task_name": "Run single test" }],
+      "space r r t": ["task::Rerun", { "reevaluate_context": false }],
+      "[ g": "editor::GoToHunk",
+      "] g": "editor::GoToPrevHunk",
+      "[ d": "editor::GoToDiagnostic",
+      "] d": "editor::GoToPrevDiagnostic",
+      "cmd-shift-k": "editor::AddSelectionAbove",
+      "cmd-shift-j": "editor::AddSelectionBelow",
+      "space s t": "task::Spawn",
+      "space m s": ["task::Spawn", { "task_name": "Make Start" }]
+    }
+  },
+  {
+    // VISUAL MODE
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      "shift-k": "editor::MoveLineUp",
+      "shift-j": "editor::MoveLineDown",
+      "g c": "editor::ToggleComments",
+      "/": [
+        "buffer_search::Deploy",
+        {
+          "replace_enabled": true,
+          "selection_search_enabled": true
+        }
+      ],
+      "ctrl-v": "editor::SplitSelectionIntoLines",
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode",
+      "space r h": "editor::RevertSelectedHunks"
+      // "k": "editor::AddSelectionAbove",
+      // "j": "editor::AddSelectionBelow"
+    }
+  },
+  {
+    // INSERT MODE
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
+      // "ctrl-enter": "editor::ConfirmCompletion"
+    }
+  },
+  {
+    // INSERT MODE WITH MENU
+    "context": "Editor && vim_mode == insert && menu",
+    "bindings": {
+      // select code completion using ctrl-enter and make enter go to new line
+      "ctrl-enter": "editor::ConfirmCompletion"
+      // "enter": "editor::Newline"
+    }
+  }
+  /// VIM CONFIGURATIONS END ===================================================
+]

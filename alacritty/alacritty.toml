@@ -1,0 +1,21 @@
+[font]
+size = 14.0
+
+[font.bold]
+family = "Monaspace Neon"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monaspace Neon"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monaspace Neon"
+style = "Regular"
+
+[font.normal]
+family = "Monaspace Neon"
+style = "Regular"
+
+[window]
+decorations = "None"
