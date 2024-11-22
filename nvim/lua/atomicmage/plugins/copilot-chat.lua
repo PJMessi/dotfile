@@ -2,6 +2,7 @@ local M = {}
 
 M.setup = function()
   return {
+    lazy = true,
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
     dependencies = {

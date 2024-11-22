@@ -4,7 +4,7 @@ M.setup = function()
   return {
     -- 'https://github.com/PJMessi/maked.nvim',
     dir = "/Users/prajwalshrestha/projects/personal/nvim/maked",
-    lazy = false,
+    lazy = true,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim", -- Telescope requires plenary

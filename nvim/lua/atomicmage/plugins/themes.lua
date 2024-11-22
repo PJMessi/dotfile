@@ -55,16 +55,29 @@ local function SetRosePine()
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require("rose-pine").setup({
+        -- styles = {
+        --   bold = true,
+        --   italic = true,
+        --   transparency = false,
+        -- },
+        --
+        -- highlight_groups = {
+        --   Comment = { italic = true },
+        --   Type = { bold = true, italic = true },
+        --   ["@variable"] = { italic = false },
+        --   ["@constant"] = { bold = true },
+        --   ["@type"] = { bold = true },
+        -- },
+        --
         styles = {
           bold = true,
-          italic = true,
+          italic = false,
           transparency = false,
         },
 
         highlight_groups = {
           Comment = { italic = true },
-          Type = { bold = true, italic = true },
-          ["@variable"] = { italic = false },
+          Type = { bold = true },
           ["@constant"] = { bold = true },
           ["@type"] = { bold = true },
         },

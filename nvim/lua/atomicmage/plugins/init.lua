@@ -234,15 +234,9 @@ require('lazy').setup {
 
   require("atomicmage.plugins.trouble").setup(),
 
-  -- require("atomicmage.plugins.supermaven").setup(),
-
   require("atomicmage.plugins.nvim-autopairs").setup(),
 
   require("atomicmage.plugins.copilot-chat").setup(),
-
-  -- require("atomicmage.plugins.no-neck-pain").setup(),
-
-  require("atomicmage.plugins.undo-tree").setup(),
 
   require("atomicmage.plugins.undo-tree").setup(),
 
@@ -250,13 +244,18 @@ require('lazy').setup {
 
   require("atomicmage.plugins.obsidian").setup(),
 
-  require("atomicmage.plugins.maked").setup(),
-
-  require("atomicmage.plugins.hanger").setup(),
-
   require("atomicmage.plugins.zen-mode").setup(),
 
   require("atomicmage.plugins.vim-tmux-navigator").setup(),
 
+  require("atomicmage.plugins.snacks-nvim").setup(),
+
+  require("atomicmage.plugins.maked").setup(),
+
+  require("atomicmage.plugins.hanger").setup(),
+
   require("atomicmage.plugins.msgme").setup(),
+
+  -- require("atomicmage.plugins.supermaven").setup(),
+  -- require("atomicmage.plugins.no-neck-pain").setup(),
 }

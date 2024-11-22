@@ -19,6 +19,10 @@ disabled = true
 
 [rust]
 format = '🦀'
+disabled = true
 
-# [go]
-# disabled = true
+[golang]
+disabled = true
+
+[terraform]
+disabled = true
