@@ -1,5 +1,4 @@
 local M = {}
-
 M.setup = function()
   return {
     'mbbill/undotree',

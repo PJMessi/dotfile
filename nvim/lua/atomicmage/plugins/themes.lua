@@ -68,7 +68,7 @@ local function SetRosePine()
         --   ["@constant"] = { bold = true },
         --   ["@type"] = { bold = true },
         -- },
-        --
+
         styles = {
           bold = true,
           italic = false,
@@ -76,6 +76,7 @@ local function SetRosePine()
         },
 
         highlight_groups = {
+
           Comment = { italic = true },
           Type = { bold = true },
           ["@constant"] = { bold = true },
