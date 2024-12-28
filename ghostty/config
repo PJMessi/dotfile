@@ -1,0 +1,43 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+# Empty values reset the configuration to the default value
+
+# Keybinds
+keybind = ctrl+z=close_surface
+# keybind = ctrl+d=new_split:right
+# keybind = ctrl+shift+d=new_split:down
+# keybind = ctrl+l=goto_split:right
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+k=goto_split:top
+# keybind = ctrl+j=goto_split:bottom
+
+# Themes
+theme = rose-pine
+
+# Fonts
+font-size = 17
+font-family = Jetbrains Mono
+# font-family-bold = Monaspace Argon
+
+# Cursors
+cursor-style-blink = true
+cursor-style = block
+shell-integration-features = no-cursor
+
+# Window
+window-height = 999
+window-width = 999
+
+# Shaders
+# Some shaders can be found in this repo, they're usually uploaded to discord
+# https://github.com/hackrmomo/ghostty-shaders
+custom-shader = ./shaders/bloom.glsl
+custom-shader = ./shaders/cubes.glsl
+custom-shader = ./shaders/tft.glsl
+# custom-shader = ./shaders/crt.glsl
+# custom-shader = ./shaders/negative.glsl
+# custom-shader = ./shaders/retro-terminal.glsl

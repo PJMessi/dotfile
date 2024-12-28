@@ -1,49 +1,28 @@
 local M = {}
 
-local function SetTintedVim()
+local function SetTokyoNight()
   return {
-    'aktersnurra/no-clown-fiesta.nvim',
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+    opts = {},
     config = function()
-      require("no-clown-fiesta").setup({
-        transparent = true,
-        styles = {
-          comments = { italic = true },
-          functions = {},
-          keywords = {},
-          lsp = {},
-          match_paren = {},
-          type = { bold = true },
-          variables = {},
-        },
-      })
-
-      vim.cmd.colorscheme 'no-clown-fiesta'
-
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#282c34', fg = '#ffffff' }) -- Background color for the pop-up
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#282c34', fg = '#61afef' }) -- Border color for the pop-up
-
-      -- Transparent background (The Primegan - atomicmage)
-      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      -- vim.cmd.colorscheme("tokyonight")
+      vim.cmd.colorscheme("tokyonight-night")
+      -- vim.cmd.colorscheme("tokyonight-storm")
+      -- vim.cmd.colorscheme("tokyonight-day")
+      -- vim.cmd.colorscheme("tokyonight-moon")
     end
   }
 end
 
-local function SetColorBuddy()
+local function SetGruvBox()
   return {
-    'tjdevries/colorbuddy.nvim',
+    'morhetz/gruvbox',
     lazy = false,
     priority = 1000,
     config = function()
-      -- vim.cmd.colorscheme("colorbuddy")
-      -- -- -- or
-      vim.cmd.colorscheme("gruvbuddy")
-
-      -- Transparent background (The Primegan - atomicmage)
-      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      vim.cmd.colorscheme("gruvbox")
     end
   }
 end
@@ -70,13 +49,12 @@ local function SetRosePine()
         -- },
 
         styles = {
-          bold = true,
+          bold = false,
           italic = false,
           transparency = false,
         },
 
         highlight_groups = {
-
           Comment = { italic = true },
           Type = { bold = true },
           ["@constant"] = { bold = true },
@@ -113,6 +91,9 @@ end
 
 M.setup = function(opts)
   return SetRosePine()
+  -- return SetGruvBox()
+  -- return SetTokyoNight()
+  -- return SetJetbrainsDracula()
 end
 
 return M

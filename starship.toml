@@ -1,28 +1,66 @@
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+format = """
+[░▒▓](overlay)\
+[ 󰧱 atomicmage ](bg:overlay fg:white bold)\
+[](bg:irismoon fg:overlay)\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$php\
+$time\
+[▓▒░](overlay)\
+\n[ ](fg:white)\
+"""
 
-# Inserts a blank line between shell prompts
-add_newline = true
+palette = "rose-pine"
 
-# Replace the '❯' symbol in the prompt with '➜'
-# The name of the module we are configuring is 'character'
-[character] 
-# The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-success_symbol = '[➜](bold green)' 
+[palettes.rose-pine]
+white = '#a3aed2'
+overlay = '#26233a'
+overlaymoon = '#393552'
+love = '#eb6f92'
+lovemoon = '#eb6f92'
+gold = '#f6c177'
+goldmoon = '#f6c177'
+rose = '#ebbcba'
+rosemoon = '#ea9a97'
+pine = '#31748f'
+pinemoon = '#3e8fb0'
+foam = '#9ccfd8'
+foammoon = '#9ccfd8'
+iris = '#c4a7e7'
+irismoon = '#c4a7e7'
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+[directory]
+style = "fg:overlay bg:irismoon bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-[aws]
-disabled = true
+[git_branch]
+symbol = ""
+style = ""
+format = '[[ $symbol $branch ](fg:rose bg:overlay)]($style)'
+
+[git_status]
+style = ""
+format = '[[($all_status$ahead_behind)](fg:love bg:overlay)]($style)'
 
 [rust]
-format = '🦀'
-disabled = true
+symbol = "󱘗"
+style = "bold"
+format = '[[ $symbol ($version) ](fg:gold bg:overlay)]($style)'
 
 [golang]
-disabled = true
+symbol = ""
+style = ""
+format = '[[ $symbol ($version) ](fg:iris bg:overlaymoon)]($style)'
 
-[terraform]
-disabled = true
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#1d2230"
+format = '[[ $time ](fg:foam bg:overlay)]($style)'
+

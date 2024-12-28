@@ -250,6 +250,8 @@ require('lazy').setup {
 
   require("atomicmage.plugins.snacks-nvim").setup(),
 
+  require("atomicmage.plugins.flash").setup(),
+
   require("atomicmage.plugins.maked").setup(),
 
   require("atomicmage.plugins.hanger").setup(),
