@@ -168,16 +168,16 @@ require('lazy').setup {
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      statusline.setup()
+      -- local statusline = require 'mini.statusline'
+      -- statusline.setup()
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we disable the section for
       -- cursor information because line numbers are already enabled
       ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return ''
-      end
+      -- statusline.section_location = function()
+      --   return ''
+      -- end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
@@ -187,16 +187,48 @@ require('lazy').setup {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      -- Atomicmage: This is required for navigating the functions.
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'rust', 'go' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+
+        -- Atomicmage: key bindings to nagivate between the functions.
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,             -- Automatically jump forward to textobject
+            keymaps = {
+              ["if"] = "@function.inner", -- Select inside function (without function keyword/signature)
+              ["af"] = "@function.outer", -- Select around function (including signature/comments)
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true,             -- Whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]f"] = "@function.outer", -- Jump to next function start
+            },
+            goto_previous_start = {
+              ["[f"] = "@function.outer", -- Jump to previous function start
+            },
+            goto_next_end = {
+              ["]F"] = "@function.outer", -- Jump to next function end
+            },
+            goto_previous_end = {
+              ["[F"] = "@function.outer", -- Jump to previous function end
+            },
+          },
+        },
       }
 
       -- There are additional nvim-treesitter modules that you can use to interact
@@ -236,7 +268,7 @@ require('lazy').setup {
 
   require("atomicmage.plugins.nvim-autopairs").setup(),
 
-  require("atomicmage.plugins.copilot-chat").setup(),
+  -- require("atomicmage.plugins.copilot-chat").setup(),
 
   require("atomicmage.plugins.undo-tree").setup(),
 
@@ -248,16 +280,19 @@ require('lazy').setup {
 
   require("atomicmage.plugins.vim-tmux-navigator").setup(),
 
-  require("atomicmage.plugins.snacks-nvim").setup(),
-
   require("atomicmage.plugins.flash").setup(),
 
-  require("atomicmage.plugins.maked").setup(),
+  require("atomicmage.plugins.lualine").setup(),
+
+  require("atomicmage.plugins.telescope-frecency").setup(),
+
+  require("atomicmage.plugins.rest-nvim").setup(),
+
+  require("atomicmage.plugins.dadbod").setup(),
 
   require("atomicmage.plugins.hanger").setup(),
 
-  require("atomicmage.plugins.msgme").setup(),
+  -- require("atomicmage.plugins.maked").setup(),
 
-  -- require("atomicmage.plugins.supermaven").setup(),
-  -- require("atomicmage.plugins.no-neck-pain").setup(),
+  -- require("atomicmage.plugins.msgme").setup(),
 }

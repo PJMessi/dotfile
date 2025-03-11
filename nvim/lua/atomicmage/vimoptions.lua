@@ -67,4 +67,21 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
+
+-- atomicmage, Bordered corners
+-- https://vi.stackexchange.com/questions/39074/user-borders-around-lsp-floating-windows
+-- local _border = "rounded"
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--   vim.lsp.handlers.hover, {
+--     border = _border
+--   }
+-- )
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+--   vim.lsp.handlers.signature_help, {
+--     border = _border
+--   }
+-- )
+-- vim.diagnostic.config {
+--   float = { border = _border }
+-- }

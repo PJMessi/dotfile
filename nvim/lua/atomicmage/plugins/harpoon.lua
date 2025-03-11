@@ -14,73 +14,51 @@ M.setup = function(opts)
       -- REQUIRED
 
       -- append to the list
-      vim.keymap.set('n', '<leader>a', function()
-        harpoon:list():add()
-      end)
+      vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
 
       -- display list ui
-      vim.keymap.set('n', '<leader>hh', function()
+      vim.keymap.set('n', '<leader>hd', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'List harpooned list' })
 
       -- add to 1
       vim.keymap.set('n', '<leader>h1', function()
         harpoon:list():replace_at(1)
-        print('added buffer to harpoon @a 1')
+        print('pinned @1')
       end)
 
       -- add to 2
       vim.keymap.set('n', '<leader>h2', function()
         harpoon:list():replace_at(2)
-        print('added buffer to harpoon @a 2')
+        print('pinned @2')
       end)
 
       -- add to 3
       vim.keymap.set('n', '<leader>h3', function()
         harpoon:list():replace_at(3)
-        print('added buffer to harpoon @a 3')
+        print('pinned @3')
       end)
 
       -- add to 4
       vim.keymap.set('n', '<leader>h4', function()
         harpoon:list():replace_at(4)
-        print('added buffer to harpoon @a 4')
+        print('pinned @4')
       end)
 
-      -- select 1
-      vim.keymap.set('n', '<leader>1', function()
-        harpoon:list():select(1)
-      end)
+      -- select 1, 2, 3, 4
+      vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end)
+      vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end)
+      vim.keymap.set('n', '<leader>3', function() harpoon:list():select(3) end)
+      vim.keymap.set('n', '<leader>4', function() harpoon:list():select(4) end)
 
-      -- select 2
-      vim.keymap.set('n', '<leader>2', function()
-        harpoon:list():select(2)
-      end)
-
-      -- select 3
-      vim.keymap.set('n', '<leader>3', function()
-        harpoon:list():select(3)
-      end)
-
-      -- select 4
-      vim.keymap.set('n', '<leader>4', function()
-        harpoon:list():select(4)
-      end)
-
-      -- select previous
-      vim.keymap.set('n', '<leader>hp', function()
-        harpoon:list():prev()
-      end)
-
-      -- select next
-      vim.keymap.set('n', '<leader>hn', function()
-        harpoon:list():next()
-      end)
+      -- select next, previous
+      vim.keymap.set('n', '<leader>hp', function() harpoon:list():prev() end)
+      vim.keymap.set('n', '<leader>hn', function() harpoon:list():next() end)
 
       -- clear list
       vim.keymap.set('n', '<leader>hc', function()
         harpoon:list():clear()
-        print('harpoon list cleared')
+        print('cleared pinned buffers')
       end)
 
       -- Use telescope UI for harpoon
@@ -101,7 +79,7 @@ M.setup = function(opts)
         }):find()
       end
 
-      vim.keymap.set("n", "<leader>ht",
+      vim.keymap.set("n", "<leader>hh",
         function()
           toggle_telescope(harpoon:list())
         end,
