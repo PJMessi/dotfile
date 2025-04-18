@@ -1,5 +1,28 @@
 local M = {}
 
+local function SetupVesper(transparent)
+  return {
+    'datsfilipe/vesper.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('vesper').setup({
+        transparent = transparent, -- Boolean: Sets the background to transparent
+        italics = {
+          comments = false,        -- Boolean: Italicizes comments
+          keywords = false,        -- Boolean: Italicizes keywords
+          functions = false,       -- Boolean: Italicizes functions
+          strings = false,         -- Boolean: Italicizes strings
+          variables = false,       -- Boolean: Italicizes variables
+        },
+        overrides = {},            -- A dictionary of group names, can be a function returning a dictionary or a table.
+        palette_overrides = {}
+      })
+      vim.cmd.colorscheme('vesper')
+    end
+  }
+end
+
 local function SetGruvBox()
   return {
     'sainnhe/gruvbox-material',
@@ -24,8 +47,8 @@ local function SetRosePine(enableTransparency)
     priority = 1000,
     config = function()
       require("rose-pine").setup({
-        variant = "main",      -- auto, main, moon, or dawn
-        dark_variant = "main", -- main, moon, or dawn
+        variant = "main",      -- auto, main, dawn, or dawn
+        dark_variant = "main", -- main, dawn, or dawn
         dim_inactive_windows = false,
         extend_background_behind_borders = true,
 
@@ -106,8 +129,8 @@ local function SetRosePine(enableTransparency)
         end,
       })
 
-      -- vim.cmd("colorscheme rose-pine")
-      vim.cmd("colorscheme rose-pine-main")
+      vim.cmd("colorscheme rose-pine")
+      -- vim.cmd("colorscheme rose-pine-main")
       -- vim.cmd("colorscheme rose-pine-moon")
       -- vim.cmd("colorscheme rose-pine-dawn")
     end,
@@ -379,7 +402,6 @@ local function SetBase16()
       --
       -- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
       -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
-
     end
   }
 end
@@ -399,12 +421,14 @@ local function setTheme(name)
     return SetDarkVoid()
   elseif name == "base16" then
     return SetBase16()
+  elseif name == "vesper" then
+    return SetupVesper(false)
   end
   return SetRosePine(false)
 end
 
 M.setup = function(_)
-  return setTheme("rosepine")
+  return setTheme("vesper")
 end
 
 return M

@@ -45,7 +45,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float l = lum(c);
     if (l > 0.2) {
       // color += l * s.z * c * 0.2;
-      color += l * s.z * c * 0.03;
+      color += l * s.z * c * 0.025;
+      // color += l * s.z * c * 0.05;
     }
   }
 

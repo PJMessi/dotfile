@@ -82,6 +82,10 @@ vim.opt.colorcolumn = "100"
 --     border = _border
 --   }
 -- )
--- vim.diagnostic.config {
---   float = { border = _border }
--- }
+
+-- atomicmage
+vim.diagnostic.config {
+  virtual_text = {
+    current_line = true
+  }
+}

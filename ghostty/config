@@ -6,38 +6,49 @@
 
 # Empty values reset the configuration to the default value
 
-# Keybinds
-keybind = ctrl+z=close_surface
-# keybind = ctrl+d=new_split:right
-# keybind = ctrl+shift+d=new_split:down
-# keybind = ctrl+l=goto_split:right
-# keybind = ctrl+h=goto_split:left
-# keybind = ctrl+k=goto_split:top
-# keybind = ctrl+j=goto_split:bottom
-
 # Themes
-theme = rose-pine
+# theme = rose-pine
+theme = vesper
 
 # Fonts
-font-size = 17
-font-family = Jetbrains Mono
-# font-family-bold = Monaspace Argon
+font-size = 14
+font-family = Iosevka Term
+# font-family = JetBrains Mono NL
+font-feature = -calt, -liga, -dlig
+# font-thicken = true
+# font-family-italic = Monaspace Xenon
+# font-style-italic = regular
+# font-family-bold = Monaspace Krypton
+# font-style-bold = regular
+
+# Keybinds
+keybind = ctrl+z=close_surface
+
+# Background
+# background-opacity = 0.9
+# background-blur-radius = 20
+# background = #000000
+# background-opacity = 0.95
+# background-blur-radius = 10
 
 # Cursors
 cursor-style-blink = true
 cursor-style = block
 shell-integration-features = no-cursor
+cursor-color = f2d5cf
 
 # Window
-window-height = 999
-window-width = 999
+# window-height = 999
+# window-width = 999
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
 
 # Shaders
-# Some shaders can be found in this repo, they're usually uploaded to discord
 # https://github.com/hackrmomo/ghostty-shaders
-custom-shader = ./shaders/bloom.glsl
-custom-shader = ./shaders/cubes.glsl
-custom-shader = ./shaders/tft.glsl
-# custom-shader = ./shaders/crt.glsl
-# custom-shader = ./shaders/negative.glsl
-# custom-shader = ./shaders/retro-terminal.glsl
+# custom-shader = ./shaders/tft2.glsl
+# custom-shader = ./shaders/bloom.glsl
+# custom-shader = ./shaders/gears-and-belts.glsl
+
+# Misc
+macos-option-as-alt = true

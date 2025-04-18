@@ -1,0 +1,36 @@
+layout {
+    pane
+    pane size=1 borderless=true {
+        plugin location="zjstatus" {
+            hide_frame_for_single_pane "false"
+            format_left  "{mode}#[fg=#e0def4] {session} {tabs}"
+            format_right "{command_kubectx}#[fg=#424554]::{command_kubens}{datetime}"
+            // format_space "#[bg=#000000]"
+
+            mode_normal          "#[bg=#89B4FA] "
+            mode_tmux            "#[bg=#f6c177] "
+            mode_locked          "#[bg=#eb6f92] "
+
+            mode_default_to_mode "tmux"
+
+            tab_normal               "#[fg=#e0def4] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_active               "#[fg=#9ccfd8,bold] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+
+            tab_fullscreen_indicator "□ "
+            tab_sync_indicator       "  "
+            tab_floating_indicator   "󰉈 "
+
+            command_kubectx_command  "kubectx -c"
+            command_kubectx_format   "#[fg=#6C7086,italic] {stdout}"
+            command_kubectx_interval "2"
+
+            command_kubens_command  "kubens -c"
+            command_kubens_format   "#[fg=#6C7086]{stdout} "
+            command_kubens_interval "2"
+
+            datetime          "#[fg=#9399B2] {format} "
+            datetime_format   "%A, %d %b %Y %H:%M"
+            datetime_timezone "Asia/Kathmandu"
+        }
+    }
+}

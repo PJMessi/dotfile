@@ -1,145 +1,74 @@
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
 [
-  {
-    "bindings": {
-      "ctrl-j": "menu::SelectNext",
-      "ctrl-k": "menu::SelectPrev",
-      "cmd-shift-w": "workspace::CloseInactiveTabsAndPanes"
-      // confirm code actions selection using ctrl-enter
-      // "ctrl-enter": ["workspace::SendKeystrokes", "enter"]
-    }
-  },
-  {
-    "context": "Pane",
-    "bindings": {
-      "cmd-1": ["pane::ActivateItem", 0],
-      "cmd-2": ["pane::ActivateItem", 1],
-      "cmd-3": ["pane::ActivateItem", 2],
-      "cmd-4": ["pane::ActivateItem", 3],
-      "cmd-5": ["pane::ActivateItem", 4],
-      "cmd-6": ["pane::ActivateItem", 5],
-      "cmd-7": ["pane::ActivateItem", 6],
-      "cmd-8": ["pane::ActivateItem", 7]
-    }
-  },
-  {
-    "context": "Editor && (showing_code_actions || showing_completions)",
-    "bindings": {
-      "ctrl-k": "editor::ContextMenuPrev",
-      "ctrl-j": "editor::ContextMenuNext"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "cmd-shift-b": "workspace::ToggleLeftDock",
-      "cmd-shift-r": "workspace::ToggleRightDock"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "cmd-n": "workspace::NewTerminal",
-      "cmd-t": "workspace::NewTerminal"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-h": null
-    }
-  },
-  {
-    "context": "ChatPanel",
-    "bindings": {
-      // "cmd-shift-r": "assistant::ToggleFocus"
-      "cmd-shift-r": "collab_panel::ToggleFocus",
-      "escape": ["workspace::ActivatePaneInDirection", "Left"]
-    }
-  },
-  {
-    "context": "AssistantPanel",
-    "bindings": {
-      // "cmd-shift-r": "chat_panel::ToggleFocus"
-      "cmd-shift-b": "project_panel::ToggleFocus"
-    }
-  },
-  {
-    "context": "ProjectPanel && not_editing",
-    "bindings": {
-      "m": "project_panel::CollapseAllEntries",
-      // "cmd-shift-b": "collab_panel::ToggleFocus"
-      "cmd-shift-b": "assistant::ToggleFocus"
-    }
-  },
-  {
-    "context": "CollabPanel",
-    "bindings": {
-      // "cmd-shift-b": "project_panel::ToggleFocus"
-      "cmd-shift-r": "chat_panel::ToggleFocus"
-    }
-  },
-  {
-    "context": "Dock",
-    "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
-    }
-  },
-  {
-    "context": "OutlinePanel",
-    "bindings": {
-      // "cmd-shift-r": "chat_panel::ToggleFocus"
-      "cmd-shift-r": "chat_panel::ToggleFocus"
-    }
-  },
-  /// VIM CONFIGURATIONS =======================================================
+  // VIM
   {
     // NORMAL AND VISUAL MODE
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "context": "VimControl && !menu",
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+
+      // git
+      "space g s": "git_panel::ToggleFocus",
+      "space s": "git::ToggleStaged"
     }
   },
   {
     // NORMAL MODE
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work only in normal mode
+      // "space h h": "pinned_file_finder::Toggle",
+
+      "cmd-o": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
+
+      // pane movement
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+
       "space d s": "outline::Toggle",
       "space f": "editor::Format",
+
       "g r": "editor::FindAllReferences",
       "g i": "editor::GoToImplementation",
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space r n": "editor::Rename",
+
+      "[ f": "vim::PreviousMethodStart",
+      "[ F": "vim::PreviousMethodEnd",
+      "] f": "vim::NextMethodStart",
+      "] F": "vim::NextMethodEnd",
+
+      "[ g": "editor::GoToHunk",
+      "] g": "editor::GoToPreviousHunk",
+
       "space p v": ["workspace::SendKeystrokes", "cmd-shift-e"],
       "space x x": ["workspace::SendKeystrokes", "cmd-shift-m"],
       "space p f": ["workspace::SendKeystrokes", "cmd-p"],
-      "space r n": "editor::Rename",
+
       "space p s": "pane::DeploySearch",
-      "space p r": [
-        "pane::DeploySearch",
-        {
-          "replace_enabled": true
-        }
-      ],
+      "space p r": ["pane::DeploySearch", { "replace_enabled": true }],
+
       "space c a": "editor::ToggleCodeActions",
       "space z f": "editor::Fold",
       "space z o": "editor::UnfoldLines",
       "space space": "file_finder::Toggle",
-      "space r t": ["task::Spawn", { "task_name": "Run single test" }],
+      "space r t": ["task::Spawn", { "task_name": "run-single-test" }],
+      "space r f t": ["task::Spawn", { "task_name": "run-all-tests" }],
       "space r r t": ["task::Rerun", { "reevaluate_context": false }],
-      "[ g": "editor::GoToHunk",
-      "] g": "editor::GoToPrevHunk",
-      "[ d": "editor::GoToDiagnostic",
-      "] d": "editor::GoToPrevDiagnostic",
       "cmd-shift-k": "editor::AddSelectionAbove",
       "cmd-shift-j": "editor::AddSelectionBelow",
-      "space s t": "task::Spawn",
-      "space m s": ["task::Spawn", { "task_name": "Make Start" }]
+      "space s t": "task::Spawn"
+      // "space m s": ["task::Spawn", { "task_name": "Make Start" }]
     }
   },
   {
@@ -158,9 +87,9 @@
         }
       ],
       "ctrl-v": "editor::SplitSelectionIntoLines",
-      "v": "editor::SelectLargerSyntaxNode",
-      "V": "editor::SelectSmallerSyntaxNode",
-      "space r h": "editor::RevertSelectedHunks"
+      "space r c": "git::Restore"
+      // "v": "editor::SelectLargerSyntaxNode",
+      // "V": "editor::SelectSmallerSyntaxNode",
       // "k": "editor::AddSelectionAbove",
       // "j": "editor::AddSelectionBelow"
     }
@@ -176,12 +105,53 @@
     }
   },
   {
-    // INSERT MODE WITH MENU
-    "context": "Editor && vim_mode == insert && menu",
+    "context": "Editor && menu",
     "bindings": {
-      // select code completion using ctrl-enter and make enter go to new line
-      "ctrl-enter": "editor::ConfirmCompletion"
-      // "enter": "editor::Newline"
+      "ctrl-enterdebug: Open Key Context View": "editor::ConfirmCompletion",
+      "ctrl-k": "editor::ContextMenuPrevious",
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-enter": ["workspace::SendKeystrokes", "enter"]
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-j": "menu::SelectNext"
+      // "ctrl-enter": ["workspace::SendKeystrokes", "enter"]
+    }
+  },
+  {
+    "context": "OutlinePanel && editing",
+    "bindings": {
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "n": "menu::SelectNext",
+      "p": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "OutlinePanel",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space p f": ["workspace::SendKeystrokes", "cmd-p"]
     }
   }
   /// VIM CONFIGURATIONS END ===================================================

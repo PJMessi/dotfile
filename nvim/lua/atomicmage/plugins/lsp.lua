@@ -120,6 +120,14 @@ M.setup = function(opts)
               callback = vim.lsp.buf.clear_references,
             })
           end
+
+          -- atomicmage
+          -- https://www.youtube.com/watch?v=ZiH59zg59kg
+          -- if client and client:supports_method('textDocument/completion') then
+          --   vim.lsp.completion.enable(true, client.id, event.buf, {
+          --     autotrigger = true
+          --   })
+          -- end
         end,
       })
 

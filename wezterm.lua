@@ -1,17 +1,13 @@
--- Pull in the wezterm API
 local wezterm = require 'wezterm'
-
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
 -- config.default_prog = { 'nu' }
 
 config.default_cwd = "/Users/prajwalshrestha/projects/"
-
-config.color_scheme = 'rose-pine'
+-- config.color_scheme = 'rose-pine'
 config.window_decorations = "RESIZE"
--- config.window_background_opacity = 0.9
--- config.macos_window_background_blur = 10
+config.macos_window_background_blur = 30
+config.window_background_opacity = 1.0
 
 -- FOR IMAGE BACKGROUND
 -- local dimmer = { brightness = 0.01 }
@@ -31,6 +27,21 @@ config.window_decorations = "RESIZE"
 --         repeat_y = "NoRepeat"
 --     }
 -- }
+
+-- Jetbrains Mono
+config.font_size = 14.0
+config.font = wezterm.font {
+    family = 'JetBrains Mono',
+    -- disable ligatures
+}
+config.font_rules = {}
+
+
+-- Additional tab bar configurations for simplicity
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_max_width = 20
+config.tab_bar_at_bottom = true
 
 config.colors = {
     -- Rosepine color scheme highlight color bug fix.
@@ -73,44 +84,4 @@ config.colors = {
     },
 }
 
--- Jetbrains Mono
-config.font_size = 14.0
-config.font = wezterm.font {
-    family = 'JetBrains Mono',
-    -- family = 'Maple Mono',
-    -- disable ligatures
-    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
-}
-config.font_rules = {}
-
--- Monaspace
--- config.font_size = 14.0
--- config.font = wezterm.font {
---     family = 'Monaspace Neon'
--- }
--- config.font_rules = {
---     -- {
---     --     italic = false,
---     --     intensity = "Bold",
---     --     font = wezterm.font {
---     --         family = 'Monaspace Radon',
---     --     }
---     -- },
---     {
---         italic = true,
---         intensity = "Normal",
---         font = wezterm.font {
---             -- italic = true,
---             family = 'Monaspace Radon'
---         }
---     }
--- }
-
--- Additional tab bar configurations for simplicity
-config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
-config.tab_max_width = 20
-config.tab_bar_at_bottom = true
-
--- and finally, return the configuration to wezterm
 return config

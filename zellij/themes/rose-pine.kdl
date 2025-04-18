@@ -1,0 +1,28 @@
+themes {
+	rose-pine-backup {
+		bg "#403d52"
+		fg "#e0def4"
+		red "#eb6f92"
+		green "#31748f"
+		blue "#9ccfd8"
+		yellow "#f6c177"
+		magenta "#c4a7e7"
+		orange "#fe640b"
+		cyan "#ebbcba"
+		black "#26233a"
+		white "#e0def4"
+	}
+	rose-pine {
+		bg "#ebbcba"
+		fg "#e0def4"
+		red "#ebbcba"
+		green "#9ccfd8" // NORMAL TAB #1
+		blue "#9ccfd8"
+		yellow "#f6c177"
+		magenta "#c4a7e7"
+		orange "#eb6f92" // MODE
+		cyan "#ebbcba"
+		black "#26233a"
+		white "#f6c177" // SESSION NAME
+	}
+}
